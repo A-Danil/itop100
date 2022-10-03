@@ -1,0 +1,78 @@
+@import '../../styles/vars.scss';
+
+.header{
+  height: 80px;
+  
+  &__content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img{
+      height: 100%;
+    }
+  }
+
+  &__nav{
+    ul{
+      display: flex;
+      align-items: center;
+
+      a{
+        display: block;
+        padding: 20px 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        color: $milk-white;
+        transition: 0.5s;
+        position: relative;
+
+        &::after{
+          position: absolute;
+          content: "";
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 1px;
+          background-color: $milk-white;
+          transition: 0.5s;
+        }
+
+        &:hover{
+          &::after{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &__exchange-rate{
+    display: flex;
+    align-items: center;
+
+    div{
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      color: $milk-white;
+      padding: 20px 10px;
+
+      &:nth-of-type(1){
+        border-right: 1px solid $milk-white;
+      }
+
+      span{
+        margin-right: 10px;
+      }
+    }
+  }
+}

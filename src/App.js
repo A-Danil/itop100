@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { Space, Spin } from 'antd';
+
+import { Header, Form } from "./components";
+import { dataLoad } from "./redux/actions";
 
 function App() {
+   const dispatch = useDispatch();
+
+  const loading = useSelector(state=> {
+    const { loadReducer } = state;
+    return loadReducer.load;
+  });
+
+  useEffect(()=>{
+    dispatch(dataLoad())
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ?
+        <Space size="middle">
+         <Spin size="large" className="spin"/>
+       </Space> :
+       <>
+        <Header />
+        <Form />
+       </>
+      }
     </div>
   );
 }
